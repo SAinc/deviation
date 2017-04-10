@@ -278,10 +278,10 @@ void LCD_Init()
         gpio_set_mode(GPIOA, GPIO_MODE_INPUT,
                       GPIO_CNF_INPUT_FLOAT, GPIO6);
 
-        spi_init_master(SPI1, 
+        spi_init_master(SPI1,
                         SPI_CR1_BAUDRATE_FPCLK_DIV_4,
                         SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
-                        SPI_CR1_CPHA_CLK_TRANSITION_1, 
+                        SPI_CR1_CPHA_CLK_TRANSITION_1,
                         SPI_CR1_DFF_8BIT,
                         SPI_CR1_MSBFIRST);
         spi_enable_software_slave_management(SPI1);
@@ -313,7 +313,7 @@ void LCD_Init()
 void LCD_Clear(unsigned int i)
 {
     // Set the character size to 1dot for all lines
-    for(i = 0; i < LCD_SCREEN_LINES; i++) {
+    for(i = 0; i <= LCD_SCREEN_LINES; i++) {
         LCD_Cmd(LCD_IA911_CHAR_SIZE | i);
         lcd_show_line("", i, LCD_ALIGN_LEFT, 0);
     }
@@ -357,7 +357,7 @@ void LCD_ShowVideo(u8 enable)
     video_enabled = enable;
 }
 
-void VIDEO_Enable(int on) 
+void VIDEO_Enable(int on)
 {
     if(on) {
         LCD_ShowVideo(1);
@@ -366,7 +366,7 @@ void VIDEO_Enable(int on)
     }
 
 }
-void VIDEO_SetChannel(int ch) 
+void VIDEO_SetChannel(int ch)
 {
     if(ch & 0x01)
         gpio_clear(GPIOA, GPIO0);
