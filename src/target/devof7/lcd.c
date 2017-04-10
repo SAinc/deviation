@@ -32,7 +32,7 @@ static u16 is_double_row = 0x00;
 #define CS_LO() gpio_clear(GPIOB, GPIO0)
 
 // The screen dimensions
-#define LCD_SCREEN_LINES    11
+#define LCD_SCREEN_LINES    12
 #define LCD_SCREEN_CHARS    24
 
 // The IA911 chip defines
